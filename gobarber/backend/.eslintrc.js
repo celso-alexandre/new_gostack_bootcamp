@@ -23,6 +23,7 @@ module.exports = {
     'prettier'
   ],
   rules: {
+    '@typescript-eslint/camelcase': 'off',
     'lines-between-class-members': ["error", "always"],
     'semi': ["error", "never"],
     'prettier/prettier': 'error',
