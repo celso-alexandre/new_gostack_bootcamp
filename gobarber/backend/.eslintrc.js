@@ -27,6 +27,9 @@ module.exports = {
     'lines-between-class-members': ["error", "always"],
     'semi': ["error", "never"],
     'prettier/prettier': 'error',
+    '@typescript-eslint/no-unused-vars': ['error', {
+      'argsIgnorePattern': '_'
+    }],
     'import/extensions': [
       'error',
       'ignorePackages',
