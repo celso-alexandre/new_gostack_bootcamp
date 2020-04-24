@@ -1,6 +1,8 @@
 ## Application
 
-![Interface](https://raw.githubusercontent.com/celso-alexandre/new_gostack_bootcamp/master/github_explorer/web/assets/readme/github-explorer.png)
+![Dashboard](https://raw.githubusercontent.com/celso-alexandre/new_gostack_bootcamp/master/github_explorer/web/assets/readme/github-explorer.png)
+
+![Repository Details](https://raw.githubusercontent.com/celso-alexandre/new_gostack_bootcamp/master/github_explorer/web/assets/readme/repository-details.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
