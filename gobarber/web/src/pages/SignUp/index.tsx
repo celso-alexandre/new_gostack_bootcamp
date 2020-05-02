@@ -94,12 +94,12 @@ const SignUp: React.FC = () => {
               <Button name="submit" type="submit">
                 Register
               </Button>
-            </Form>
 
-            <Link to="/">
-              <FiArrowLeft />
-              Go back and Log-In
-            </Link>
+              <Link to="/">
+                <FiArrowLeft />
+                Go back and Log-In
+              </Link>
+            </Form>
           </AnimationContainer>
         </Content>
       </Container>
