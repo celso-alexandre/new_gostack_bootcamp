@@ -15,6 +15,8 @@ import * as Yup from 'yup';
 import {Form} from '@unform/mobile';
 import {FormHandles} from '@unform/core';
 
+import {useAuth} from '../../hooks/auth';
+
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
@@ -42,36 +44,41 @@ const SignIn: React.FC = () => {
 
   const navigation = useNavigation();
 
-  const handleSignIn = useCallback(async (data: SignInFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const {signIn} = useAuth();
 
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .required('E-mail is mandatory')
-          .email('Please type a valid e-mail'),
-        password: Yup.string().required('Password is mandatory'),
-      });
+  const handleSignIn = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('E-mail is mandatory')
+            .email('Please type a valid e-mail'),
+          password: Yup.string().required('Password is mandatory'),
+        });
 
-      // await signIn({email: data.email, password: data.password});
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
-        formRef.current?.setErrors(errors);
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-        return;
+        await signIn({email: data.email, password: data.password});
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
+
+          return;
+        }
+
+        Alert.alert(
+          'Authentication Error',
+          'An authentication error has ocurred. Verify your username and password',
+        );
       }
-
-      Alert.alert(
-        'Authentication Error',
-        'An authentication error has ocurred. Verify your username and password',
-      );
-    }
-  }, []);
+    },
+    [signIn],
+  );
 
   return (
     <>
