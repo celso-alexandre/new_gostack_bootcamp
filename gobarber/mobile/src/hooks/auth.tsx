@@ -32,24 +32,20 @@ const AuthProvider: React.FC = ({children}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    () => {
-      setLoading(false);
-      async function loadStorageData(): Promise<void> {
-        const [token, user] = await AsyncStorage.multiGet([
-          '@GoBarber:token',
-          '@GoBarber:user',
-        ]);
+    async function loadStorageData(): Promise<void> {
+      const [token, user] = await AsyncStorage.multiGet([
+        '@GoBarber:token',
+        '@GoBarber:user',
+      ]);
 
-        if (token[1] && user[1]) {
-          setData({token: token[1], user: JSON.parse(user[1])});
-        }
-
-        setLoading(false);
+      if (token[1] && user[1]) {
+        setData({token: token[1], user: JSON.parse(user[1])});
       }
 
-      console.log(loading);
-      loadStorageData();
-    };
+      setLoading(false);
+    }
+
+    loadStorageData();
   }, []);
 
   const signIn = useCallback(async ({email, password}) => {
