@@ -1,46 +1,48 @@
 module.exports = {
   env: {
     es6: true,
-    node: true
+    node: true,
   },
   extends: [
     'standard',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  plugins: [
-    '@typescript-eslint',
-    'prettier'
-  ],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     '@typescript-eslint/camelcase': 'off',
-    'lines-between-class-members': ["error", "always"],
-    'semi': ["error", "never"],
+    'lines-between-class-members': ['error', 'always'],
+    semi: ['error', 'never'],
     'prettier/prettier': 'error',
-    '@typescript-eslint/no-unused-vars': ['error', {
-      'argsIgnorePattern': '_'
-    }],
-    'import/extensions': [
+    '@typescript-eslint/no-unused-vars': [
       'error',
-      'ignorePackages',
       {
-        'ts': 'never'
-      }
-    ]
+        argsIgnorePattern: '_',
+      },
+    ],
+    'import/extensions': {
+      'import/extensions': [
+        'error',
+        'ignorePackages',
+        {
+          ts: 'never',
+        },
+      ],
+    },
   },
   settings: {
     'import/resolver': {
-      typescript: {}
-    }
-  }
+      typescript: {},
+    },
+  },
 }

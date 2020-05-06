@@ -2,10 +2,10 @@ import path from 'path'
 import fs from 'fs'
 import { getRepository } from 'typeorm'
 
-import uploadConfig from '../config/upload'
-import User from '../models/User'
+import uploadConfig from '@config/upload'
+import User from '@modules/users/infra/typeorm/entities/User'
 
-import AppError from '../errors/AppError'
+import AppError from '@shared/errors/AppError'
 
 interface Request {
   user_id: string
@@ -25,9 +25,9 @@ class UpdateUserAvatarService {
     if (user.avatar) {
       const userAvatarFilePath = path.join(uploadConfig.directory, user.avatar)
 
-      const userAvatarFileExists = await fs.promises.stat(userAvatarFilePath)
+      const userAvatarFileExistsInDisk = fs.existsSync(userAvatarFilePath)
 
-      if (userAvatarFileExists) {
+      if (userAvatarFileExistsInDisk) {
         await fs.promises.unlink(userAvatarFilePath)
       }
     }
