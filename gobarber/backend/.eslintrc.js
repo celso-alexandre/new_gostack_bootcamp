@@ -21,6 +21,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     '@typescript-eslint/camelcase': 'off',
+    'no-useless-contructor': 'off',
     'lines-between-class-members': ['error', 'always'],
     semi: ['error', 'never'],
     'prettier/prettier': 'error',
@@ -29,6 +30,10 @@ module.exports = {
       {
         argsIgnorePattern: '_',
       },
+    ],
+    '@typescript-eslint/interface-name-prefix': [
+      'error',
+      { prefixWithI: 'always' },
     ],
     'import/extensions': {
       'import/extensions': [
