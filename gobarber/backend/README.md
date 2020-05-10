@@ -5,7 +5,8 @@
 **Functional Requisites**
 
 - User must be able to recover a forgotten pasword by providing its e-mail
-  - User must receive an e-mail with instruction on how it can proceed its password recovering
+- User must receive an e-mail with instruction on how it can proceed its password recovering
+- User should be able to recover its password
 
 **Non-Functional Requisites**
 
