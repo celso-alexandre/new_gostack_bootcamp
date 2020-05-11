@@ -1,12 +1,20 @@
 import nodemailer, { Transporter } from 'nodemailer'
+import { inject, injectable } from 'tsyringe'
 
 import IMailProvider from '../models/IMailProvider'
+import ISendMailDTO from '../dtos/ISendMailDTO'
 
+import IMailTemplateProvider from '@shared/container/providers/MailTemplateProvider/models/IMailTemplateProvider'
+
+@injectable()
 export default class EtherealMailProvider implements IMailProvider {
   private client: Transporter
 
-  constructor() {
-    const account = nodemailer.createTestAccount().then(account => {
+  constructor(
+    @inject('MailTemplateProvider')
+    private mailTemplateProvider: IMailTemplateProvider
+  ) {
+    nodemailer.createTestAccount().then(account => {
       const transporter = nodemailer.createTransport({
         host: account.smtp.host,
         port: account.smtp.port,
@@ -23,13 +31,24 @@ export default class EtherealMailProvider implements IMailProvider {
     })
   }
 
-  public async sendMail(to: string, body: string): Promise<void> {
+  public async sendMail({
+    to,
+    from,
+    subject,
+    templateData,
+  }: ISendMailDTO): Promise<void> {
     try {
       const message = await this.client.sendMail({
-        from: 'GoBarber Team <gobarber@gobarber.com>',
-        to,
-        subject: 'Password Recovery ✔',
-        text: body,
+        from: {
+          name: from?.name || 'GoBarber Team',
+          address: from?.email || 'gobarber@gobarber.com',
+        },
+        to: {
+          name: to.name,
+          address: to.email,
+        },
+        html: await this.mailTemplateProvider.parse(templateData),
+        text: 'Test',
       })
 
       console.log('Message sent: %s', message.messageId)
