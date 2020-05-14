@@ -1,8 +1,8 @@
-# To-do
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=GoBarber&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fcelso-alexandre%2Fnew_gostack_bootcamp%2Fmaster%2Fgobarber%2Fbackend%2Fassets%2FREADME%2Fapi%2Fgobarber-backend-insomnia.json)
 
 ## Password recovery
 
-**Functional Requisites**
+[ X ] **Functional Requisites**
 
 - User must be able to recover a forgotten pasword by providing its e-mail
 - User must receive an e-mail with instruction on how it can proceed its password recovering
@@ -10,26 +10,26 @@
 
 **Non-Functional Requisites**
 
-- Utilize Mailtrap to test mail send while in dev env
+- [ X ] Utilize Mailtrap to test mail send while in dev env
 - Utilize Amazon SES for sending mails when in production
 - Mail send must occur in background
 
 **Business Rules**
 
-- The link for recovering a forgotten password must expire itself within 2 hours
-- User must confirm the provided new password twice to confirm the password reset
+- [ X ] The link for recovering a forgotten password must expire itself within 2 hours
+- [ X ] User must confirm the provided new password twice to confirm the password reset
 
 ## Profile updating
 
 **Functional Requisites**
 
-- User shoud be able to update its name, e-mail and password
+- [ X ] User shoud be able to update its name, e-mail and password
 
 **Non-Functional Requisites**
 
-- User must not be able to update its own e-mail to an already utilized e-mail
-- When updating its password, user must provide its old one
-- When updating its password, user must confirm its new password
+- [ X ] User must not be able to update its own e-mail to an already utilized e-mail
+- [ X ] When updating its password, user must provide its old one
+- [ X ] When updating its password, user must confirm its new password
 
 ## Services scheduling
 
