@@ -8,7 +8,7 @@ let fakeUsersRepository: FakeUsersRepository
 let fakeStorageProvider: FakeStorageProvider
 let showProfile: ShowProfileService
 
-describe('showProfile', () => {
+describe('ShowProfile', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository()
     fakeStorageProvider = new FakeStorageProvider()
