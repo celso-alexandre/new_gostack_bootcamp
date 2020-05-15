@@ -4,9 +4,9 @@
 
 [ X ] **Functional Requisites**
 
-- User must be able to recover a forgotten pasword by providing its e-mail
-- User must receive an e-mail with instruction on how it can proceed its password recovering
-- User should be able to recover its password
+- [ X ] User must be able to recover a forgotten pasword by providing its e-mail
+- [ X ] User must receive an e-mail with instruction on how it can proceed its password recovering
+- [ X ] User should be able to recover its password
 
 **Non-Functional Requisites**
 
@@ -14,18 +14,18 @@
 - Utilize Amazon SES for sending mails when in production
 - Mail send must occur in background
 
-**Business Rules**
+[ X ] **Business Rules**
 
 - [ X ] The link for recovering a forgotten password must expire itself within 2 hours
 - [ X ] User must confirm the provided new password twice to confirm the password reset
 
 ## Profile updating
 
-**Functional Requisites**
+[ X ] **Functional Requisites**
 
 - [ X ] User shoud be able to update its name, e-mail and password
 
-**Non-Functional Requisites**
+[ X ] **Non-Functional Requisites**
 
 - [ X ] User must not be able to update its own e-mail to an already utilized e-mail
 - [ X ] When updating its password, user must provide its old one
@@ -33,23 +33,23 @@
 
 ## Services scheduling
 
-**Functional Requisites**
+[ X ] **Functional Requisites**
 
-- User must be able to list all GoBarber registered providers with at least an schedule available in the next 30 days
-- After selecting a provider, user must be able to list available schedules, for selection
-- User must be able to select an available schedule of a provider
+- [ X ] User must be able to list all GoBarber registered providers with at least an schedule available in the next 30 days
+- [ X ] After selecting a provider, user must be able to list available schedules, for selection
+- [ X ] User must be able to select an available schedule of a provider
 
 **Non-Functional Requisites**
 
 - Providers listing must have a cache
 
-**Business Rules**
+[ X ] **Business Rules**
 
-- Each schedule must be spaced in 1 hour
-- Schedules must be avaible between 8h a.m. and and 6h p.m. (First starting at 8 a.m., and last one starting at 5 p.m.)
-- User must not be able to schedule in an already taken schedule
-- User must not be able to schedule in past
-- A provider must not be able to schedule with itself
+- [ X ] Each schedule must be spaced in 1 hour
+- [ X ] Schedules must be avaible between 8h a.m. and and 6h p.m. (First starting at 8 a.m., and last one starting at 5 p.m.)
+- [ X ] User must not be able to schedule in an already taken schedule
+- [ X ] User must not be able to schedule in past
+- [ X ] A provider must not be able to schedule with itself
 
 ## Provider Dashboard
 
