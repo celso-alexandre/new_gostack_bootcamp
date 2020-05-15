@@ -1,4 +1,4 @@
-import { startOfHour } from 'date-fns'
+import { startOfHour, isBefore, getHours } from 'date-fns'
 import { injectable, inject } from 'tsyringe'
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment'
 
@@ -24,6 +24,18 @@ class CreateAppointmentService {
     user_id,
   }: IRequest): Promise<Appointment> {
     const appointmentDate = startOfHour(date)
+
+    if (isBefore(appointmentDate, Date.now())) {
+      throw new AppError('Past appointments are not allowed')
+    }
+
+    if (user_id === provider_id) {
+      throw new AppError('A provider cannot schedule with itself')
+    }
+
+    if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
+      throw new AppError('Selected time is outside open time (8am to 5pm)')
+    }
 
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate
