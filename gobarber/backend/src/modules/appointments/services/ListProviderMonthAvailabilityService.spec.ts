@@ -1,7 +1,6 @@
 import AppError from '@shared/errors/AppError'
 
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository'
-//import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository'
 import FakeStorageProvider from '@shared/container/providers/StorageProvider/fakes/FakeStorageProvider'
 import ListProviderMonthAvailabilityService from './ListProviderMonthAvailabilityService'
 
