@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { celebrate } from 'celebrate'
 
 import AppointmentsController from '@modules/appointments/infra/http/controllers/AppointmentsController'
 import ProviderAppointmentsController from '@modules/appointments/infra/http/controllers/ProviderAppointmentsController'
