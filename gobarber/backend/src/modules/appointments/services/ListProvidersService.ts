@@ -2,6 +2,7 @@ import { injectable, inject } from 'tsyringe'
 
 import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 import User from '@modules/users/infra/typeorm/entities/User'
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider'
 
 interface IRequest {
   loggedInUserIdToExclude: string
@@ -11,13 +12,29 @@ interface IRequest {
 export default class ListProvidersService {
   constructor(
     @inject('UsersRepository')
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+
+    @inject('CacheProvider')
+    private cacheProvider: ICacheProvider
   ) {}
 
   public async execute({ loggedInUserIdToExclude }: IRequest): Promise<User[]> {
-    const users = await this.usersRepository.findAllProviders({
-      loggedInUserIdToExclude,
-    })
+    let users = await this.cacheProvider.recover<User[]>(
+      `providers-list:${loggedInUserIdToExclude}`
+    )
+
+    if (!users) {
+      users = await this.usersRepository.findAllProviders({
+        loggedInUserIdToExclude,
+      })
+
+      console.log('A query no banco foi feita')
+
+      await this.cacheProvider.save(
+        `providers-list:${loggedInUserIdToExclude}`,
+        users
+      )
+    }
 
     return users
   }
