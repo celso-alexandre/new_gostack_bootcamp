@@ -14,8 +14,8 @@ export default {
 
   defaults: {
     from: {
-      email: 'diego@rocketseat.com.br',
-      name: 'Diego da Rocketseat',
+      email: 'webmaster@celsoalexandre.com',
+      name: 'Celso Alexandre Webmaster',
     },
   },
 } as IMailConfig

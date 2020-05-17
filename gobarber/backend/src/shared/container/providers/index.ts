@@ -3,6 +3,7 @@ import mailConfig from '@config/mail'
 
 import IStorageProvider from './StorageProvider/models/IStorageProvider'
 import DiskStorageProvider from './StorageProvider/implementations/DiskStorageProvider'
+import './CacheProvider'
 
 import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider'
 import EtherealMailProvider from '@shared/container/providers/MailProvider/implementations/EtherealMailProvider'
