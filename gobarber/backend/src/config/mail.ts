@@ -14,8 +14,8 @@ export default {
 
   defaults: {
     from: {
-      email: 'webmaster@celsoalexandre.com',
-      name: 'Celso Alexandre Webmaster',
+      email: process.env.DEFAULT_FROM_EMAIL_ADDRESS,
+      name: process.env.DEFAULT_FROM_NAME,
     },
   },
 } as IMailConfig
