@@ -28,8 +28,6 @@ export default class ListProvidersService {
         loggedInUserIdToExclude,
       })
 
-      console.log('A query no banco foi feita')
-
       await this.cacheProvider.save(
         `providers-list:${loggedInUserIdToExclude}`,
         users
