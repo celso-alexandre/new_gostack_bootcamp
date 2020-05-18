@@ -1,9 +1,11 @@
-import AppError from '@shared/errors/AppError'
+//import AppError from '@shared/errors/AppError'
 
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider'
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository'
 import FakeStorageProvider from '@shared/container/providers/StorageProvider/fakes/FakeStorageProvider'
 import ListProvidersService from './ListProvidersService'
 
+let fakeCacheProvider: FakeCacheProvider
 let fakeUsersRepository: FakeUsersRepository
 let fakeStorageProvider: FakeStorageProvider
 let listProvidersService: ListProvidersService
@@ -12,8 +14,12 @@ describe('ListProviders', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository()
     fakeStorageProvider = new FakeStorageProvider()
+    fakeCacheProvider = new FakeCacheProvider()
 
-    listProvidersService = new ListProvidersService(fakeUsersRepository)
+    listProvidersService = new ListProvidersService(
+      fakeUsersRepository,
+      fakeCacheProvider
+    )
   })
 
   it('should be able to list providers without listing the logged in provider', async () => {

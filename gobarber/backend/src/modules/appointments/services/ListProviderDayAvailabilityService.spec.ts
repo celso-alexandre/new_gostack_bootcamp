@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError'
+//import AppError from '@shared/errors/AppError'
 
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository'
 import FakeStorageProvider from '@shared/container/providers/StorageProvider/fakes/FakeStorageProvider'
