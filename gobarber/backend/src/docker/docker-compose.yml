@@ -1,11 +1,21 @@
 version: '3.1'
 
 services:
-
   gostack_postgres:
     image: postgres
     ports:
-     - '5432:5432'
+      - '5432:5432'
     restart: 'no'
     environment:
       POSTGRES_PASSWORD: docker
+
+  gostack_mongo:
+    image: mongo
+    restart: 'no'
+    environment:
+    MONGO_INITDB_ROOT_USERNAME: ''
+    MONGO_INITDB_ROOT_PASSWORD: ''
+
+  gostack_redis:
+    image: redis
+    restart: 'no'
