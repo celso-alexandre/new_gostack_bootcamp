@@ -1,9 +1,18 @@
 import React from 'react';
 
-import { Container, Header, HeaderContent, Profile } from './styles';
+import {
+  Container,
+  Header,
+  HeaderContent,
+  Profile,
+  Content,
+  Schedule,
+  NextAppointment,
+  Calendar,
+} from './styles';
 
 import logoImg from '../../assets/logo.svg';
-import { FiPower } from 'react-icons/fi';
+import { FiPower, FiClock } from 'react-icons/fi';
 import { useAuth } from '../../hooks/auth';
 
 const Dashboard: React.FC = () => {
@@ -30,6 +39,34 @@ const Dashboard: React.FC = () => {
           </button>
         </HeaderContent>
       </Header>
+
+      <Content>
+        <Schedule>
+          <h1>Schedules</h1>
+          <p>
+            <span>Today</span>
+            <span>Day 06</span>
+            <span>Monday</span>
+          </p>
+
+          <NextAppointment>
+            <strong>Next Appointment</strong>
+            <div>
+              <img
+                src="http://localhost:3333/files/uploads/2034f0fbafcd85a070ff-profile.jpeg"
+                alt="Celso Alexandre"
+              />
+
+              <strong>Celso Alexandre</strong>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+            </div>
+          </NextAppointment>
+        </Schedule>
+        <Calendar />
+      </Content>
     </Container>
   );
 };
