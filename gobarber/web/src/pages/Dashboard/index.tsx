@@ -140,8 +140,8 @@ const Dashboard: React.FC = () => {
     <Container>
       <Header>
         <HeaderContent>
-          <img src={logoImg} alt="" />
-          afternoonAppointments
+          <img src={logoImg} alt={user.avatar_url} />
+
           <Profile>
             <img src={user.avatar_url} alt={user.name} />
             <div>
